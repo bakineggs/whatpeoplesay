@@ -23,15 +23,11 @@ public static function getOutput() {
   $ret['links'][2]['text'] = SMDEFAULT;
   $ret['links'][2]['href'] = SMDEFAULT;
 
-  // Key Value pairs - up to 4
-  $ret['dict'][0]['key'] = SMDEFAULT;
-  $ret['dict'][0]['value'] = SMDEFAULT;
-  $ret['dict'][1]['key'] = SMDEFAULT;
-  $ret['dict'][1]['value'] = SMDEFAULT;
-  $ret['dict'][2]['key'] = SMDEFAULT;
-  $ret['dict'][2]['value'] = SMDEFAULT;
-  $ret['dict'][3]['key'] = SMDEFAULT;
-  $ret['dict'][3]['value'] = SMDEFAULT;
+  for ($i = 0; $i < 4; $i++) {
+    $append = $i > 0 ? '.' . $i : '';
+    if (($creator = Data::get('smid:HoW/dc:creator' . $append)) && $description = Data::get('smid:HoW/dc:description' . $append))
+      $ret['dict'][$i] = array('key' => $creator, 'value' => $description);
+  }
 
   /* This is for infobar apps
      You can put a subset of HTML in here
