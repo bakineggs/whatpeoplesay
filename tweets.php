@@ -21,5 +21,5 @@ foreach ($keyword_xml->children() as $result)
 
 $keywords = array_unique($keywords);
 
-readfile('http://search.twitter.com/search.atom?q=' . urlencode(implode(' ', $keywords)));
+readfile('http://search.twitter.com/search.atom?rpp=4&q=' . urlencode(implode(' ', $keywords)));
 ?>
