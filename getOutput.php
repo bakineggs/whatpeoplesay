@@ -24,7 +24,7 @@ public static function getOutput() {
   $ret['links'][2]['href'] = SMDEFAULT;
 
   for ($i = 0; $i < 4; $i++) {
-    $append = $i > 0 ? '.' . $i : '';
+    $append = $i > 0 ? '.' . $i+1 : '';
     if (($creator = Data::get('smid:HoW/dc:creator' . $append)) && $description = Data::get('smid:HoW/dc:description' . $append))
       $ret['dict'][$i] = array('key' => $creator, 'value' => $description);
   }
